@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado de eventos</title>
+</head>
+<body>
+<h1>Listado de eventos</h1>
+
+<table border="1">
+    <caption>Eventos</caption>
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Titulo</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Inicio</th>
+        <th scope="col">Fin</th>
+        <td scope="col">Observaciones</td>
+    </tr>
+    </thead>
+    <tbody>
+<tr th:each="event: ${events}">
+    <th scope="row" th:text="${event.getEventId()}"></th>
+    <td th:text="${event.getTitle()}">Titulo</td>
+    <td th:text="${event.getDescription()}">Descripcion </td>
+    <td th:text="${#temporals.format(event.getStart(), 'dd/MM/yyyy HH:mm:ss')}">Inicio</td>
+    <td th:text="${#temporals.format(event.getEnd())}">Fin.</td>
+    <td th:text="'Fila ' + ${eventStat.count} + ' de ' + ${eventStat.size}"> Fila 1 de 5</td>
+</tr>
+    </tbody>
+    <tfoot>
+    <td colspan="6">Hay un total de <span th:remove="tag" th:text="${#lists.size(events)}"></span> Eventos </td>
+
+    </tfoot>
+</table>
+
+
+<p> <a href="/event/new">Crear nuevo evento</a> </p>
+
+</body>
+</html>
