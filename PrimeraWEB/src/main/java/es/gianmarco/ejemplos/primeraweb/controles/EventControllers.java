@@ -1,13 +1,12 @@
 package es.gianmarco.ejemplos.primeraweb.controles;
 
 import es.gianmarco.ejemplos.primeraweb.model.Event;
+import es.gianmarco.ejemplos.primeraweb.repositories.base.Repository;
+import es.gianmarco.ejemplos.primeraweb.repositories.base.RepositoryImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
@@ -53,16 +52,20 @@ public String getCreateForm(HttpServletRequest request){
 
     return "detalle-evento";
 
-    }
+    }@ModelAttribute(name = "languages")
 private Iterable<String> getLanguages(){
        List<String> languages = new ArrayList<>();
-    languages.add("English");
-    languages.add("Spanish");
-    languages.add("French");
-    languages.add("German");
+    languages.add("en");
+    languages.add("es");
+    languages.add("fr");
+    languages.add("de");
     return languages;
-    
-}
 
+}
+private void pruebas(){
+
+       Repository<Event, Integer> repo = new RepositoryImpl<>();
+       Event e = repo.findById(3);
+}
 
 }

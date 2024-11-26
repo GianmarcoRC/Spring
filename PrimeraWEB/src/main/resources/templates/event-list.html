@@ -5,8 +5,16 @@
     <title>Listado de eventos</title>
 </head>
 <body>
-<h1>Listado de eventos</h1>
+<header>
+<h1 th:text="'Listado de eventos de ' + ${usuario}">Listado de eventos</h1>
+<ul th:remove="all-but-first">
 
+    <li th:each="languaje: ${languages}" th:text="${languaje}">en</li>
+    <li>es</li>
+    <li>fr</li>
+</ul>
+
+</header>
 <table border="1">
     <caption>Eventos</caption>
     <thead>

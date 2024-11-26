@@ -5,7 +5,18 @@
     <title>Detalles de eventos</title>
 </head>
 <body>
+<header>
 <h1>Detalles de eventos <span th:text="${event.getEventId()}">Hola</span> </h1>
+<p>Se ha recibido un valor <span th:remove="tag" th:text="${eventId}"></span> </p>
+    <h1 th:text="'Listado de eventos de ' + ${usuario}">Listado de eventos</h1>
+    <ul th:remove="all-but-first">
+
+        <li th:each="languaje: ${languages}" th:text="${languaje}">en</li>
+        <li>es</li>
+        <li>fr</li>
+    </ul>
+
+</header>
 <p>Titulo <span th:text="${event.getTitle()}"></span> </p>
 <p>Descripcion: <span th:text="${event.getDescription()}"></span> </p>
 <p>Fecha inicio: <span th:text="${event.getStart()}"></span> </p>
